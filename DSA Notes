@@ -1,0 +1,60 @@
+## Binary Search algo : (you see sorted array{ascending/descending order or any kind of order like first increasing then decreasing and so on apply
+binary search , if answer is not coming then other technique)
+Steps =>
+1. Initialize the first element's index as the starting and last element's index as end term.
+** 2. Find the middle term { (start + end)/2 }.
+{Imp. note => it is not preferred and will give error in some cases where (start+end) exceeds the range of 'int' , so use this instead :
+              { start + (end - start)/2 }.
+
+3. If the target element is same as the middle element the answer is found.
+
+**4. Check if your target element is greater or lower than the middle element.
+if lower then : "s" will be same but "e" will be now "m-1".   {m is for middle}
+if higher then : "e" will be same but "s" will be now "m+1".
+and then apply Binary Search again till we get the target element.
+
+{size gets half after every Binary search}
+
+
+* Worst Case => log(N)
+
+
+# Order agnostic Binary Search :
+As we know in Binary search , ques are always given to us in sorted manner but what if we don't know whether the sorted array is in ascending or descending
+order we cant precode the algo in ascending or descending.
+So what we can do is , can check it in which order the array is and then apply the binary search algo accordingly.
+
+
+# we know that ->
+a) when size of the array is given
+we search from up to bottom (means we divide the start and end of an array in binary search which in order means the size of the array gets divided by 2 in
+every level)
+i.e, N then N/2 then N/4 then N/8... {and the time taken is logN}
+
+b) when size of the array is not known or infinite array
+we search from bottom to up (means we take a small chunk of array then double it and check the target element in there in that chunk or not if not then,
+double it again if yes then apply binary search on that chunk becz now you have start and end both)
+i.e, N/8 then N/4 then N/2... {and the time taken will be same as logN}
+
+
+
+# Bitonic Array or Mountain Array => means array which first increases and then decreases.
+eg : [2,3,5,7,6,4,3]   -> the array first increases and then after 7 it gets decreased.
+
+
+# Rotated Sorted Array =>
+eg : u are given a sorted array like {1 2 3 4 5} then the rotated sorted array will be like this => {4 5 1 2 3}
+ ..{means the last one comes to first then the second last will come to first and the shift the first one to second and other also shift on right hand side}
+
+1)Find the pivot(i.e, highest element in the array).
+2)First check in first part whether the target element is there or not making the start as 0 and end as pivot.
+if not ->
+3)Then check in the second part making the start as pivot + 1 and end as a arr.length
+
+
+## Pattern Ques
+
+How to approach a ques =>       1) no. of lines  = no. of rows = no. of times outer loop will run
+                                2) Identify for every row number                -> how many columns are there.
+                                                                                -> types of elements in the columns (like '*' type or number types etc).
+                                                                                -> what do you need to print.
