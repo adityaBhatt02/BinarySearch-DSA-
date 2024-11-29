@@ -1,0 +1,60 @@
+import java.util.Scanner;
+
+public class SmallestNumberGreaterThanTarget {
+    public static void main(String[] args) {
+    Scanner scn = new Scanner(System.in);
+        System.out.print("Enter the size of the array : ");
+        int n = scn.nextInt();
+        char[] letters = new char[n];
+
+        for (int i = 0; i < letters.length; i++) {
+            letters[i] = scn.next().charAt(0);
+        }
+
+        System.out.print("Enter the target character : ");
+        char target = scn.next().charAt(0);
+
+        char ans = nextGreatestLetter(letters , target);
+        System.out.print(ans);
+    }
+
+    static char nextGreatestLetter(char[] letters , char target) {
+        int start = 0;
+        int end = letters.length - 1;
+        boolean isAsc = letters[start] < letters[end];
+
+        if(isAsc) {
+            while (start <= end) {
+                int mid = start + (end - start)/2;
+
+                if(letters[mid] == target) {
+                    if(letters[mid] == letters[letters.length - 1]) {
+                        start = 0;
+                        break;
+                    }
+                    else{
+                        return letters[mid + 1];
+                    }
+                }
+
+                if(target < letters[mid]) {
+                    end = mid - 1;
+                }
+                else if (target > letters[mid]) {
+                    if(letters[mid] == letters[letters.length - 1]) {
+                        start = 0;
+                        break;
+                    }else{
+                        start = mid + 1;
+                    }
+                }
+            }
+
+        }else {
+            System.out.print("Array must be sorted in ascending order!");
+        }
+
+        return letters[start];
+    }
+    }
+
