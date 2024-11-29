@@ -1,0 +1,31 @@
+import java.util.Scanner;
+
+public class PeakIndexInMountainArray {
+    public static void main(String[] args) {
+        Scanner scn = new Scanner(System.in);
+        System.out.print("Enter the size of the array: ");
+        int n = scn.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = scn.nextInt();
+        }
+
+        int ans = mountainArraySearch(arr);
+        System.out.print(ans);
+    }
+
+    static int mountainArraySearch(int[] arr) {
+        int start = 0;
+        int end = arr.length - 1;
+
+        while(start < end) {
+            int mid = start + (end - start) / 2;
+            if (arr[ mid ] > arr[ mid + 1 ]) {
+                end = mid;
+            } else if (arr[ mid ] < arr[ mid + 1 ]) {
+                start = mid + 1;
+            }
+        }
+        return start;
+    }}
+
