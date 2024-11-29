@@ -1,0 +1,249 @@
+
+**jdk(java developement kit) contains the compiler(javac) which is used to convert the source code into the byte code..
+
+** jst(just in time) is inside the jvm , so what it does is =>
+Suppose there is a line of code which the jvm converts(or interpret) into machine code(0 or 1) again and again becz that code is being repeated jo what jst do is saves
+that code's interpreted form into itself then the jvm doesnt have to interpret it into machine code again and again..
+
+** jre(java runtime executive) suppose it like a box and jvm is the actual content inside the box(i.e, jre)
+jre contains files and packages and jvm use those in order to interpret or complete the task..
+
+**primitive datatypes are those which can not be get break further like:
+string is a non-primitive datatype so for eg, "adi" word can be broken into further characters like 'a' , 'i' etc. but now a char datatype cannot be broken further so its
+a primitive datatype
+primitive datatypes includes int , float , double , long , char and bool
+
+**   !    int is used for storing integer values like 2,45,99 etc. and long is used to store large integer values like 12345678 ,etc..
+By default all the integer values are stored as int so if we need to change it in long then we can by writing L in the last like:
+long a = 5677895L;
+!    float is used for storing decimal values like 2.3,7.9 etc. and double is used to store large decimal values like 325466.457435 ,etc..
+(note: values are not accurate in float it most of the time gives floating point error like if u provide the value as 2.3456891 it will read or give o/p as 2.34578)
+By default all the decimal are stored in double so if we need to change it in float we can by writing f in the last like:
+float a = 98.6f;
+
+
+** name of the classes , methods/functions , object , variables , packages , etc. are known as identifiers
+   and the values of those identifiers are known as literals..
+
+# Interesting note : Suppose u want to write a million u will write it as 10,00,000 but it will give error becz "," is not used in literals.
+                   What u can do is just replace "," with "_" so 10_00_000 will be approved.
+
+
+### Automatic type conversion =>
+
+if you are asking for something bigger but get smaller its fine (like u are asking for float but user gave int then its fine , code will run) but if you are asking for
+something lesser and get bigger it will not work (like u are asking the user for int but they gave float it will not work)
+
+eg : case1)    float = scn.nextFloat();                                               case2)         int = scn.nextInt();
+on console:    63                                                                     on console:    63.2
+o/p:           63.0                                                                   o/p:           error
+
+becz float is greater than integer.. so java cant automatically convert int into float.
+
+
+* So to convert int into float we do type casting like this:
+int a = (int)(63.56f)                                           but                                int a = 63.56f
+System.out.println(a)                                                                              System.out.println(a)
+
+o/p : 63                                                                                           o/p : error
+
+*
+int a = 257;
+byte b = (byte)(a);
+o/p -> 1
+[becz 256 is the max size of a byte and 257 exceeds it so
+what java do is a % (max size of byte{i.e, 256}) and gives
+the remainder as o/p (in this case it was 1)]
+
+
+### Automatic Type Promotion in Expression =>
+
+Whenever you do byte expression it get promoted into int like :
+you cant do -->
+
+eg1)                                                                                                    eg2)
+byte b = 50;                                                                                            byte a = 50
+b = b * 2;                                                                                              byte b = 40
+                                                                                                        byte c = 100
+it will give error becz b is byte and when getting                                                      int d = (a * b) / c
+multiplied with 2 it will change into int so you need to
+change the datatype of b to int.                                                                     when multiplying of a and b takes place it exceeds the range of byte
+                                                                                                     so java automatically promotes it into int and we had stored the
+                                                                                                     expression of byte in int(i.e, d) it will not give an error.
+
+
+* Imp note : Java follows unicode(i.e, all the characters and words can be written or showed as o/p like =>
+System.out.println("नमस्कार");
+
+
+
+### Type Promotion Rules:                        char -> int                        and              byte -> short -> int -> long -> float -> double
+
+   1) All byte and short values are promoted to int.
+   2) If one operand is a long, the whole expression is promoted to long.
+   3) If one operand is a float, the entire expression is promoted to float.
+   4) If any of the operands is double, the result is double.
+
+eg: sop(2 * 2.567f) => o/p will be in float only becz float is bigger than int.     (smaller ones gets converted into bigger ones{whether its +,-,/,* ,etc.)
+
+
+* Math.max() is used to check the max no. b/w to 2 numbers.
+eg :
+int a = 10 , b = 30 , c = 20;
+System.out.print(Math.max(c , Math.max(a,b));
+
+
+
+## .trim means remove all the spaces that are at the end of the words,          and charAt(0) gives char at zeroth index
+eg:
+
+system.out.print(scn.next().trim().charAt(0));
+
+in console :
+                            hello
+o/p :
+h
+
+
+## note : agar kisi number ko 10 se divide karte hae then usska last digit hat jata hae and 10 se modulo karte hae to last digit answer aata hae.
+eg :
+2345 / 10 => 234           and         2345 % 10 => 5
+
+
+## to compare the value of the string we use .equal() method =>
+eg :
+String fruit = "apple";
+if(fruit.equal("apple") {
+sout("its a red juicy apple!!");
+}
+
+
+## Switch statements =>
+Switch(expression) {
+ case 1 :                                         // 1 is just written aaese he if in string then it would be written in " " , eg: case "Apple" :
+ // do something
+ break;
+
+ case2 :
+ // do something
+ break;
+
+ default :
+ // if above case dont match
+}
+
+we use 'switch' statement if there are multiple 'if' statements and even better use we enhanced switch for much more better and cleaner code
+we can apply it by right clicking the switch statement and choosing it and , it doesnt use 'break' statement becz it's in it already.
+
+so enhanced switch syntax is like :
+
+switch(expression){
+case 1 -> sout(" ");
+case 2 -> sout(" ");
+default -> sout(" ");
+}
+
+
+
+### In java there is no pass by reference only having pass by value its only passing the value of the reference.
+when we pass something in the function
+eg:
+    public static void main(String[] args) {
+        Scanner scn = new Scanner(System.in);
+        String name = "Aditya Bhatt";
+        changeName(name);
+        System.out.print(name);
+    }
+
+    static void changeName(String naam) {
+        naam = "adi";
+    }
+
+o/p ->  will be Aditya Bhatt not adi.
+ // now samjho     ----------->             name is pointing towards the string obejct which is "Aditya Bhatt" and naam is also pointing towards same.
+                                            so if change the value of naam it will not affect the value of the name variable. becz u cannot modify string as
+                                            they are immutable.
+
+
+## simplest way to print the array as a string(converts the array into a string) in Java: Arrays.toString() method. {internally it is using for loop only}
+there are 3 ways to print an array : 1) normal for loop(and printing with arr[i] one by one   2) for-each loop or adavance for loop   3) Arrays.toString[arr] {and the best one also}
+
+## var args should always comes in last in the parameter sequence
+so,
+void fun(int a , int b , String... v) {}
+
+
+## In Java array objects are stored in Heap. And objects that are stored in heap are not continuous(unlike in C/C++ arrays are stored continuously).
+So that's why internally in Java array may not be continuous (depends on JVM) but in other languages arrays are continuous.
+* Continuous means elements are stored in arrays one after other without leaving any space.
+
+* int[] arr = new int[5];             (here, int[] is the datatype and arr is the reference variable and they are declared at compile time and
+                                       new int[5] is creating the object in the heap at runtime).
+                                       ** At the runtime, memory is being allocated and this is known as Dynamic Memory Allocation(DMA).
+                                       {so simply, runtime pe obejcts is being created so memory allocation also takes place this known as DMA}.
+
+
+* null is just like a special literal and can not be assigned to any primitive datatype can only be assigned to non-primitive only.
+like:   String s = null;  ---> if u print it o/p will null.
+not     int a = null;     ---> this will give error.
+
+array is also a collection of reference variable u can say that as arr[0] , arr[1] etc. are also works as a reference variable for a value inside the heap,
+and by default for any reference variable the value is null.
+like:          String[] s = new String[5];        ---> so if u print the value of s[0] , s[1] ... s[5] they will give null as the o/p.
+
+
+## 2-d or multidimensional arrays -->
+they are created like this => 1) int[][] arr = new int[3][]  => first [] is for rows and second [] is for column(which is not necessarily need to be set)
+                              2) int[][] arr = {
+                                 {1,2,3,9,2} ,
+                                 {4,5,6} ,                                 *note : size of the individual arrays can differ not necessarily need to same.
+                                 {7,8,9,5}
+                              }
+and we can call them like this :
+
+
+
+## ArrayList<>    -->     we use ArrayList<> in java when we dont want the array to have a particular/fixed size or we know that the array size needs to
+                          be flexible in a particular program. ArrayList<> are slower than the normal arrays and they can be considered as vectors in c++
+
+eg : ArrayList<Integer> list = new ArrayList<>(3);                        --> Integer for int type elements , same for String , etc. and 3 is just working
+                                                                              as a constructor(for the size of the list)
+
+* list.add() method is used for adding element in the list. --> add(5) , add(2) or add(scn.nextInt)
+and to print just simply print the list.              &&                 to get a particular element from the list we use =>
+                                                                        list.get() method and pass the index of that element like list.get(0) etc.
+
+## Interesting point => the size of ArrayList is fixed like for eg:
+you input some elements in the list like -> [1,2,3..] but when half the size of the list is filled it makes another list of double the size and copy
+your previous elements also.
+so [1,2,3] -> [1,2,3,9,18] -> ...
+
+
+** note :  if we (return -1) in any program it simply means that no value found in that array,etc.
+                                                    or
+                                             Integer.MAX_VALUE;      (becz it can be that -1 could be an element in the array) so for that we can use this.
+
+
+## Time complexity -> Definition in my words =>          {it represent the time required to iterate through an array (using loop)}.
+                                                                                     or
+                                                                    {how the time grows as the input grows}.
+* best case scenario => will be when the element we need will be present at 0th index , then the array will be iterated only one time and take the least
+time possible.    {time constant remains constant even if the size of the array increases}.           => O(1) i.e, constant
+* worst case scenario => will be when the element we need is not present in the array , then the array will be iterated till the last element and take the
+highest time possible.         {time constant increases if the size of the array increases}.          => O(n) i.e, linear
+
+
+
+## Some similarities in String and Arrays =>
+both have  : 1) arr.length   and  str.length();    {in case of str .length is a method and variable in case of arr}
+             2) both uses indexes to retrieve an element inside them (its char in case of a String)
+             3) arr[i] for arrays and str.charAt(i);
+
+** Note (about int type methods) : 1)whenever the return statement is hit then it will come out of that func. and return the value when called.
+                                   2)we can create new array in the return statement of an int method like =>
+                                    eg : return new int[] {-1,-1};
+                                                  or
+                                         return new int[][] {{1,2} , {3,4}};
+{its like when we create a new array normally ->  int[] arr = {} we can do it simply like that or can do int[] arr = new int[] {} also (but its not
+needed in that case) but when creating an array in return statement of an int method we need to do it.}
+
